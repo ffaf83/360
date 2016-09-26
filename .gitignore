@@ -1,0 +1,5 @@
+/target/*
+!/target/site/*
+.idea
+nbactions.xml
+nb-configuration.xml
