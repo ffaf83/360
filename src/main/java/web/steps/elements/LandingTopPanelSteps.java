@@ -8,12 +8,10 @@ import web.elements.LandingTopPanel;
  * @since Sep 25, 2016
  * @author Aleksei
  */
-public class LandingTopPanelSteps extends ScenarioSteps {
-    
-    private LandingTopPanel landingTopPanel;
+public class LandingTopPanelSteps extends ScenarioSteps {    
 
     protected LandingTopPanel getLandingTopPanel() {
-        return landingTopPanel;
+        return getPages().onSamePage().getAt(LandingTopPanel.class);
     }
 
     @Step(callNestedMethods = false)

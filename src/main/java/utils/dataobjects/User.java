@@ -6,8 +6,8 @@ package utils.dataobjects;
  */
 public final class User {
 
-    public String email;
-    public String password;
+    private String email;
+    private String password;
 
     @Override
     public String toString() {

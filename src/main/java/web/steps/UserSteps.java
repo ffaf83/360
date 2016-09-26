@@ -19,6 +19,9 @@ public class UserSteps extends ScenarioSteps {
     @Steps
     MainPageSteps mainPageSteps;
 
+    @Steps
+    SettingsPageSteps settingsPageSteps;
+
     public LandingPageSteps landingPage() {
         return landingPageSteps;
     }
@@ -29,5 +32,9 @@ public class UserSteps extends ScenarioSteps {
 
     public MainPageSteps mainPage() {
         return mainPageSteps;
+    }
+
+    public SettingsPageSteps settingsPage() {
+        return settingsPageSteps;
     }
 }

@@ -9,7 +9,7 @@ import utils.helpers.SuiteWrapper;
 
 /**
  * @since Sep 26, 2016
- * @author Aleksei <starostin@truckerpath.com>
+ * @author Aleksei
  */
 @RunWith(SerenityRunner.class)
 public class RestoringPasswordSuite extends SuiteWrapper {

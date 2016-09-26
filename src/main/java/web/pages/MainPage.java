@@ -10,11 +10,9 @@ import org.openqa.selenium.WebDriver;
  */
 @DefaultUrl("/web/")
 @At("#HOST/web/")
-public class MainPage extends AbstractPage {
+public class MainPage extends AbstractPageObject {
 
     public MainPage(WebDriver driver) {
         super(driver);
     }
-
-
 }

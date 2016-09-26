@@ -3,13 +3,13 @@ package web.elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import web.pages.AbstractPage;
+import web.pages.AbstractPageObject;
 
 /**
  * @since Sep 25, 2016
  * @author Aleksei
  */
-public class LandingAuthPopupElement extends AbstractPage {
+public class LandingAuthPopupElement extends AbstractPageObject {
 
     @FindBy(css = ".simplepopup .bHSignIn")
     private WebElement blockPopupAuth;
@@ -38,11 +38,17 @@ public class LandingAuthPopupElement extends AbstractPage {
     @FindBy(css = ".simplepopup .signup [type='submit']")
     private WebElement buttonSignUpSubmit;
 
-    @FindBy(css = ".simplepopup .signin a.forgotpass")
-    private WebElement linkForgotPassWhenSignIn;
-
     @FindBy(css = ".simplepopup .signin a.signup")
     private WebElement linkSignUpWhenSignIn;
+
+    @FindBy(className = "close")
+    private WebElement iconClose;
+
+    @FindBy(className = "simplepopup")
+    private WebElement blockAuthPopup;
+
+    @FindBy(xpath = "//div[contains(@class,'simplepopup')]//div[contains(@ng-bind,'landing_invalid_login')]")
+    private WebElement textInvalidLogin;
 
     public LandingAuthPopupElement(WebDriver driver) {
         super(driver);
@@ -60,20 +66,45 @@ public class LandingAuthPopupElement extends AbstractPage {
         linkSignUpWhenSignIn.click();
     }
 
-    public void typeEmail(String email) {
+    public void typeSignUpEmail(String email) {
         inputSignUpEmail.sendKeys(email);
     }
 
-    public void typePassword(String password) {
+    public void typeSignUpPassword(String password) {
         inputSignUpPassword.sendKeys(password);
     }
 
-    public void typePasswordConfirm(String passwordConfirm) {
+    public void typeSignUpPasswordConfirm(String passwordConfirm) {
         inputSignUpPasswordConfirm.sendKeys(passwordConfirm);
     }
 
     public void pressButtonSubmitSignUp() {
         buttonSignUpSubmit.click();
         waitForElementNotPresent(buttonSignUpSubmit);
+    }
+
+    public void typeSignInEmail(String email) {
+        inputSignInEmail.sendKeys(email);
+    }
+
+    public void typeSignInPassword(String password) {
+        inputSignInPassword.sendKeys(password);
+    }
+
+    public void pressButtonSubmitSignIn() {
+        buttonSignInSubmit.click();
+        waitForElementNotPresent(buttonSignInSubmit);
+    }
+
+    public void clickIconClosePopup() {
+        iconClose.click();
+    }
+
+    public boolean isblockAuthPopupVisible() {
+        return waitForElementNotPresent(blockAuthPopup);
+    }
+
+    public boolean isInvalidLoginOrPasswordDisplayed() {
+        return waitForElementPresent(textInvalidLogin);
     }
 }

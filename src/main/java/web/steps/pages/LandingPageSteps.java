@@ -14,10 +14,10 @@ import web.steps.elements.LandingTopPanelSteps;
 public class LandingPageSteps extends ScenarioSteps {
 
     @Steps
-    protected LandingTopPanelSteps landingTopPanelSteps;
+    private LandingTopPanelSteps landingTopPanelSteps;
 
     @Steps
-    protected LandingAuthPopupElementSteps landingAuthPopupElementSteps;
+    private LandingAuthPopupElementSteps landingAuthPopupElementSteps;
 
     @Steps
     private BrowserHelper resolutionHelper;

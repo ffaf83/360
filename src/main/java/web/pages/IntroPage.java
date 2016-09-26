@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
  */
 @DefaultUrl("/web/intro/")
 @At("#HOST/web/intro/")
-public class IntroPage extends AbstractPage {
+public class IntroPage extends AbstractPageObject {
 
     @FindBy(css = ".intro .startReading")
     private WebElement buttonStartReading;

@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
  */
 @DefaultUrl("/")
 @At("#HOST/")
-public class LandingPage extends AbstractPage {
+public class LandingPage extends AbstractPageObject {
 
     @FindBy(css = ".bLogo")
     private WebElement imageLogo;

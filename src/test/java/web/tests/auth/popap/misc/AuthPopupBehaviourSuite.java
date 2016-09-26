@@ -9,15 +9,18 @@ import utils.helpers.SuiteWrapper;
 
 /**
  * @since Sep 26, 2016
- * @author Aleksei <starostin@truckerpath.com>
+ * @author Aleksei
  */
 @RunWith(SerenityRunner.class)
 public class AuthPopupBehaviourSuite extends SuiteWrapper {
 
-    @Pending
     @Test
     @Issue("#13")
     public void userShouldBeAbleToClosePopupAuthFormByClickingCrossIcon() {
+        userSteps.landingPage().openPage();
+        userSteps.landingPage().topPanel().pressButtonStartReading();
+        userSteps.landingPage().authPopup().clickIconClosePopup();
+        userSteps.landingPage().authPopup().assertThat().authPopupShouldNotBeVisible();
     }
 
     @Pending

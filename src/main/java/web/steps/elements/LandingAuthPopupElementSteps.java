@@ -1,7 +1,9 @@
 package web.steps.elements;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
+import utils.dataobjects.User;
 import web.elements.LandingAuthPopupElement;
 
 /**
@@ -10,10 +12,15 @@ import web.elements.LandingAuthPopupElement;
  */
 public class LandingAuthPopupElementSteps extends ScenarioSteps {
 
-    private LandingAuthPopupElement landingAuthPopupElement;
+    @Steps
+    protected LandingAuthPopupElementAssertionSteps landingAuthPopupElementAssertionSteps;
 
     private LandingAuthPopupElement getLandingAuthPopupElement() {
-        return landingAuthPopupElement;
+        return getPages().onSamePage().getAt(LandingAuthPopupElement.class);
+    }
+
+    public LandingAuthPopupElementAssertionSteps assertThat() {
+        return landingAuthPopupElementAssertionSteps;
     }
 
     @Step(callNestedMethods = false)
@@ -27,22 +34,51 @@ public class LandingAuthPopupElementSteps extends ScenarioSteps {
     }
 
     @Step(callNestedMethods = false)
-    public void typeEmail(String email) {
-        getLandingAuthPopupElement().typeEmail(email);
+    public void typeSignUpEmail(String email) {
+        getLandingAuthPopupElement().typeSignUpEmail(email);
     }
 
     @Step(callNestedMethods = false)
-    public void typePassword(String password) {
-        getLandingAuthPopupElement().typePassword(password);
+    public void typeSignUpPassword(String password) {
+        getLandingAuthPopupElement().typeSignUpPassword(password);
     }
 
     @Step(callNestedMethods = false)
-    public void typePasswordConfirm(String passwordConfirm) {
-        getLandingAuthPopupElement().typePasswordConfirm(passwordConfirm);
+    public void typeSignUpPasswordConfirm(String passwordConfirm) {
+        getLandingAuthPopupElement().typeSignUpPasswordConfirm(passwordConfirm);
     }
 
     @Step(callNestedMethods = false)
     public void pressButtonSubmitSignUp() {
         getLandingAuthPopupElement().pressButtonSubmitSignUp();
+    }
+
+    @Step(callNestedMethods = false)
+    public void fillAndSendSignUpForm(User user) {
+        typeSignUpEmail(user.getEmail());
+        typeSignUpPassword(user.getPassword());
+        typeSignUpPasswordConfirm(user.getPassword());
+        pressButtonSubmitSignUp();
+    }
+
+    @Step(callNestedMethods = false)
+    public void typeSignInEmail(String email) {
+        getLandingAuthPopupElement().typeSignInEmail(email);
+    }
+
+    @Step(callNestedMethods = false)
+    public void typeSignInPassword(String password) {
+        getLandingAuthPopupElement().typeSignInPassword(password);
+    }
+
+
+    @Step(callNestedMethods = false)
+    public void pressButtonSubmitSignIn() {
+        getLandingAuthPopupElement().pressButtonSubmitSignIn();
+    }
+
+    @Step(callNestedMethods = false)
+    public void clickIconClosePopup() {
+        getLandingAuthPopupElement().clickIconClosePopup();
     }
 }

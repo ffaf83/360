@@ -10,10 +10,8 @@ import web.pages.IntroPage;
  */
 public class IntroPageSteps extends ScenarioSteps {
 
-    private IntroPage introPage;
-
     protected IntroPage getIntroPage() {
-        return introPage;
+        return getPages().onSamePage().getAt(IntroPage.class);
     }
 
     @Step(callNestedMethods = false)

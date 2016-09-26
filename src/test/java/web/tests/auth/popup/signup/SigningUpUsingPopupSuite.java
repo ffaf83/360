@@ -25,9 +25,9 @@ public class SigningUpUsingPopupSuite extends SuiteWrapper {
         userSteps.landingPage().topPanel().pressButtonStartReading();
         userSteps.landingPage().authPopup().clickLinkSignInWithEmail();
         userSteps.landingPage().authPopup().clickLinkSignUp();
-        userSteps.landingPage().authPopup().typeEmail(user.getEmail());
-        userSteps.landingPage().authPopup().typePassword(user.getPassword());
-        userSteps.landingPage().authPopup().typePasswordConfirm(user.getPassword());
+        userSteps.landingPage().authPopup().typeSignUpEmail(user.getEmail());
+        userSteps.landingPage().authPopup().typeSignUpPassword(user.getPassword());
+        userSteps.landingPage().authPopup().typeSignUpPasswordConfirm(user.getPassword());
         userSteps.landingPage().authPopup().pressButtonSubmitSignUp();
         userSteps.introPage().pressButtonStartReading();
         userSteps.mainPage().topPanel().assertThat().elementWithUserLoginNameShouldPresentInTopMenu(user);

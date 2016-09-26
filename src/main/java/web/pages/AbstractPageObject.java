@@ -6,17 +6,18 @@ import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.scheduling.ThucydidesFluentWait;
 import org.openqa.selenium.*;
 import utils.helpers.InvisibilityOfElement;
+import utils.helpers.VisibilityOfElement;
 
 /**
  * @since Sep 25, 2016
  * @author Aleksei
  */
-public abstract class AbstractPage extends PageObject {
+public abstract class AbstractPageObject extends PageObject {
 
     private static final int DEFAULT_IMPLICITLY_WAIT = 15000;
     private final int implicitWait = Integer.parseInt(System.getProperty("webdriver.timeouts.implicitlywait", Integer.toString(DEFAULT_IMPLICITLY_WAIT)));
 
-    public AbstractPage(WebDriver driver) {
+    public AbstractPageObject(WebDriver driver) {
         super(driver);
     }
 
@@ -38,6 +39,29 @@ public abstract class AbstractPage extends PageObject {
         WebElement wef = $(element).withTimeoutOf(100, TimeUnit.MILLISECONDS);
         try {
             wait.until(new InvisibilityOfElement(wef));
+        } catch (TimeoutException e) {
+            result = false;
+        } catch (Throwable t) {
+            throw new Error(t);
+        } finally {
+            resetImplicitTimeout();
+        }
+        return result;
+    }
+
+    protected boolean waitForElementPresent(WebElement element) {
+        return waitForElementPresent(element, implicitWait);
+    }
+
+    protected boolean waitForElementPresent(WebElement element, int timeout) {
+        setImplicitTimeout(0, TimeUnit.MILLISECONDS);
+        Boolean result = true;
+        ThucydidesFluentWait<WebDriver> wait = waitForCondition()
+            .withTimeout(timeout, TimeUnit.MILLISECONDS)
+            .pollingEvery(500, TimeUnit.MILLISECONDS);
+        WebElement wef = $(element).withTimeoutOf(100, TimeUnit.MILLISECONDS);
+        try {
+            wait.until(new VisibilityOfElement(wef));
         } catch (TimeoutException e) {
             result = false;
         } catch (Throwable t) {

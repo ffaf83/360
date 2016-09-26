@@ -13,10 +13,8 @@ import web.elements.MainTopPanel;
  */
 public class MainTopPanelAssertionSteps extends ScenarioSteps {
 
-    private MainTopPanel mainTopPanel;
-
     private MainTopPanel getMainTopPanel() {
-        return mainTopPanel;
+        return getPages().onSamePage().getAt(MainTopPanel.class);
     }
 
     @Step(callNestedMethods = false)

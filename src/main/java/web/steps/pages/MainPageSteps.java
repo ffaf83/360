@@ -11,10 +11,9 @@ import web.steps.elements.MainTopPanelSteps;
 public class MainPageSteps extends ScenarioSteps {
 
     @Steps
-    MainTopPanelSteps mainTopPanelSteps;
+    private MainTopPanelSteps mainTopPanelSteps;
 
     public MainTopPanelSteps topPanel() {
         return mainTopPanelSteps;
     }
-
 }
